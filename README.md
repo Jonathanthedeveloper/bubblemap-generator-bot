@@ -2,20 +2,21 @@
 
 A Telegram bot providing comprehensive token analysis with visual bubble maps, multi-chain security checks, risk reports, and holder analytics.
 
-✨ Features
--🗺️ Visual Bubble Maps: Generate interactive visualizations of token holder distributions
--🔗 Multi-Chain Support: Analyze tokens across Ethereum, BSC, Solana, Polygon, Avalanche, and more
--🛡️ Security Analysis: Detect honeypots, hidden mints, and malicious contracts
--🔍 Risk Reports: Get detailed security assessments with clear risk indicators
--👥 Holder Analysis: View and track top token holders with percentage breakdowns
--⭐ Watchlist: Save and monitor your favorite tokens
--📊 Market Data: View liquidity, supply, and other key metrics
+## ✨ Features
+
+- 🗺️ Visual Bubble Maps: Generate interactive visualizations of token holder distributions
+- 🔗 Multi-Chain Support: Analyze tokens across Ethereum, BSC, Solana, Polygon, Avalanche, and more
+- 🛡️ Security Analysis: Detect honeypots, hidden mints, and malicious contracts
+- 🔍 Risk Reports: Get detailed security assessments with clear risk indicators
+- 👥 Holder Analysis: View and track top token holders with percentage breakdowns
+- ⭐ Watchlist: Save and monitor your favorite tokens
+- 📊 Market Data: View liquidity, supply, and other key metrics
 
 ## 📋 Prerequisites
 
-Node.js (v16 or higher)
+Node.js (v20 or higher)
 MySQL database
-Telegram Bot token (obtained from @BotFather)
+Telegram Bot token (obtained from [@BotFather](https://t.me/BotFather))
 
 ## 🚀 Installation
 
