@@ -14,9 +14,9 @@ A Telegram bot providing comprehensive token analysis with visual bubble maps, m
 
 ## 📋 Prerequisites
 
-Node.js (v20 or higher)
-MySQL database
-Telegram Bot token (obtained from [@BotFather](https://t.me/BotFather))
+- Node.js (v20 or higher)
+- MySQL database
+- Telegram Bot token (obtained from [@BotFather](https://t.me/BotFather))
 
 ## 🚀 Installation
 
