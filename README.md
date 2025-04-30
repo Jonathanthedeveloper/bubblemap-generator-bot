@@ -1,0 +1,1 @@
+# bubblemap-generator-bot
