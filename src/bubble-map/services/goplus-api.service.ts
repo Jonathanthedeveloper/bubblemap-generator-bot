@@ -61,11 +61,26 @@ export class GoPlusApiService {
 
     const url = `${this.apiBaseUrl}/token_security/${chainId}?contract_addresses=${contractAddress}`;
 
-    const response = await firstValueFrom(
-      this.httpService.get<GoPlusApiResponse<TokenSecurityAndRiskData>>(url),
-    );
+    try {
+      const response = await firstValueFrom(
+        this.httpService.get<GoPlusApiResponse<TokenSecurityAndRiskData>>(url),
+      );
 
-    return response.data.result;
+      return response.data.result;
+    } catch (error) {
+      console.log(error.response);
+      if (error.response?.status === 404) {
+        throw new Error('Token not found or invalid contract address');
+      } else if (error.response?.status === 403) {
+        throw new Error('Access denied to the requested resource');
+      } else {
+        throw new Error(
+          'An error occurred while fetching token security data: ' +
+            (error.message ||
+              'An unexpected error occurred. Please try again later.'),
+        );
+      }
+    }
   }
 
   async getSolanaTokenSecurityAndRiskData(contractAddress: string) {
@@ -75,13 +90,28 @@ export class GoPlusApiService {
 
     const url = `${this.apiBaseUrl}/solana/token_security?contract_addresses=${contractAddress}`;
 
-    const response = await firstValueFrom(
-      this.httpService.get<GoPlusApiResponse<SolanaTokenSecurityAndRiskData>>(
-        url,
-      ),
-    );
+    try {
+      const response = await firstValueFrom(
+        this.httpService.get<GoPlusApiResponse<SolanaTokenSecurityAndRiskData>>(
+          url,
+        ),
+      );
 
-    return response.data.result;
+      return response.data.result;
+    } catch (error) {
+      console.log(error.response);
+      if (error.response?.status === 404) {
+        throw new Error('Token not found or invalid contract address');
+      } else if (error.response?.status === 403) {
+        throw new Error('Access denied to the requested resource');
+      } else {
+        throw new Error(
+          'An error occurred while fetching Solana token security data: ' +
+            (error.message ||
+              'An unexpected error occurred. Please try again later.'),
+        );
+      }
+    }
   }
 
   async checkRugPull(chainId: number, contractAddress: string) {
@@ -96,10 +126,24 @@ export class GoPlusApiService {
 
     const url = `${this.apiBaseUrl}/rugpull_detecting/${chainId}?contract_addresses=${contractAddress}`;
 
-    const response = await firstValueFrom(
-      this.httpService.get<GoPlusApiResponse<RugPullAnalysis>>(url),
-    );
+    try {
+      const response = await firstValueFrom(
+        this.httpService.get<GoPlusApiResponse<RugPullAnalysis>>(url),
+      );
 
-    return response.data.result;
+      return response.data.result;
+    } catch (error) {
+      if (error.response?.status === 404) {
+        throw new Error('Token not found or invalid contract address');
+      } else if (error.response?.status === 403) {
+        throw new Error('Access denied to the requested resource');
+      } else {
+        throw new Error(
+          'An error occurred while fetching rug pull analysis: ' +
+            (error.message ||
+              'An unexpected error occurred. Please try again later.'),
+        );
+      }
+    }
   }
 }

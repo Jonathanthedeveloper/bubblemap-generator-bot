@@ -33,7 +33,9 @@ export class AppUpdate {
 *Commands:*
 /map [chain] [address] - Generate a bubble map for a token
 /watchlist - View your saved tokens
-/settings - Configure your preferences
+/set_default_chain [chain] - Set your default chain for the bot
+/settings - View your settings
+/exit - Terminate the current process
 /help - Show this help message
 
 *Supported chains:*

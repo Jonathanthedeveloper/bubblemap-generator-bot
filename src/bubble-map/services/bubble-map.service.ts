@@ -166,7 +166,8 @@ export class BubbleMapService {
     } catch (error) {
       console.error('Error fetching data:', error);
       await ctx.reply(
-        'An error occurred while fetching the data. Please try again later.',
+        error.message ||
+          'An error occurred while fetching the data. Please try again later.',
       );
     }
   }

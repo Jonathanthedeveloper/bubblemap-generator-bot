@@ -32,13 +32,10 @@ import {
 } from 'src/utils';
 import { GoPlusApiService } from './services/goplus-api.service';
 
-// 1. Define your session structure
 interface MySession {
-  defaultChain?: Chain; // Make it optional if it might not be set initially
-  // Add any other session properties you use
+  defaultChain?: Chain;
 }
 
-// 2. Create a custom context type combining base Context and your session
 type MyContextWithMessage = Context<
   UpdateType.MessageUpdate<Message.TextMessage>
 > & {
@@ -76,6 +73,7 @@ export class BubbleMapUpdate {
       }
     }
 
+    // If no chain is set or format mismatch, enter the scene to select a chain
     if (!chain || formatMismatch) {
       await ctx.scene.enter(BUBBLE_MAP_SCENE_ID);
       return;
@@ -321,7 +319,7 @@ export class BubbleMapUpdate {
     } catch (error) {
       console.error('Error in risk report:', error);
       await ctx.reply(
-        'Error fetching risk report data. Please try again later.',
+        error.message || 'Error fetching risk report. Please try again later.',
       );
     }
   }
@@ -402,7 +400,10 @@ export class BubbleMapUpdate {
       });
     } catch (error) {
       console.error('Error in rug pull check:', error);
-      await ctx.reply('Error fetching rug pull data. Please try again later.');
+      await ctx.reply(
+        error.message ||
+          'Error fetching rug pull report. Please try again later.',
+      );
     }
   }
   @Action(/^holders_([a-z]+)_(.+)_(\d+)?$/)
@@ -426,7 +427,7 @@ export class BubbleMapUpdate {
       await this.cacheManager.set(
         `holders_${chain}_${address}`,
         holders,
-        3600000, // Cache for 1 hour
+        3600000, // 1 hour cache time
       );
     }
 
@@ -495,7 +496,7 @@ export class BubbleMapUpdate {
 
   @Action('close')
   async onClose(@Ctx() ctx: Context) {
-    ctx.answerCbQuery('Deleting...');
+    ctx.answerCbQuery();
     await ctx.deleteMessage();
   }
 }

@@ -87,16 +87,28 @@ export class BubbleMapApiService {
 
     const url = `${this.apiBaseUrl}/map-data/?token=${token}&chain=${chain}`;
 
-    const response = await firstValueFrom(this.httpService.get<MapData>(url));
+    try {
+      const response = await firstValueFrom(this.httpService.get<MapData>(url));
 
-    return response.data;
+      return response.data;
+    } catch (error) {
+      throw new Error(
+        error.response?.data?.message || 'Error fetching map data',
+      );
+    }
   }
 
   async fetchMetadata(token: string, chain: Chain = 'eth') {
     const url = `${this.apiBaseUrl}/map-metadata?token=${token}&chain=${chain}`;
-    const response = await firstValueFrom(
-      this.httpService.get<MapMetadata>(url),
-    );
-    return response.data;
+    try {
+      const response = await firstValueFrom(
+        this.httpService.get<MapMetadata>(url),
+      );
+      return response.data;
+    } catch (error) {
+      throw new Error(
+        error.response?.data?.message || 'Error fetching metadata',
+      );
+    }
   }
 }
