@@ -24,7 +24,6 @@ export class AppUpdate {
     );
   }
 
-  // Implement a better help command
   @Help()
   async help(@Ctx() ctx) {
     const message = `

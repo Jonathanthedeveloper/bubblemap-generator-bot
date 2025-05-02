@@ -2,6 +2,8 @@
 
 A Telegram bot providing comprehensive token analysis with visual bubble maps, multi-chain security checks, risk reports, and holder analytics.
 
+The telegram bot is available at [@TokenAnalyserTelegramBot](https://t.me/TokenAnalyserTelegramBot)
+
 ## ✨ Features
 
 - 🗺️ Visual Bubble Maps: Generate interactive visualizations of token holder distributions
@@ -82,6 +84,7 @@ npm run build
 > you can also send just the token address to check it
 
 ### Integrations
+
 The bot integrates with multiple APIs:
 
 - BubbleMap API: For generating holder distribution maps
