@@ -68,7 +68,7 @@ export class BubbleMapService {
       ],
       [
         Markup.button.callback(
-          isWatchlistItem ? 'Remove From Watchlist' : '⭐ Add to Watchlist',
+          isWatchlistItem ? '➖ Remove From Watchlist' : '⭐ Add to Watchlist',
           isWatchlistItem
             ? `watchlist:remove_${chain}_${address}`
             : `watchlist:add_${chain}_${address}`,

@@ -14,7 +14,7 @@ export class SettingsUpdate {
 
       const message = `
 *Settings* ⚙️
-*Default Chain:* ${this.bubblemapApiService.chainNames[defaultChain].name} (${defaultChain})
+*Default Chain:* ${this.bubblemapApiService.chainNames[defaultChain].name} \\(${defaultChain}\\)
 *Watchlist:* ${ctx.session.watchlist?.length || 0} tokens
 `;
       const keyboard = Markup.inlineKeyboard([
