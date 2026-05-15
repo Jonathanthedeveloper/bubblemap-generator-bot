@@ -1,5 +1,5 @@
 import { Command, Ctx, Update } from 'nestjs-telegraf';
-import type { BubbleMapApiService } from 'src/bubble-map/services/bubble-map-api.service';
+import { BubbleMapApiService } from 'src/bubble-map/services/bubble-map-api.service';
 import type { Chain } from 'src/types';
 import { Markup } from 'telegraf';
 
