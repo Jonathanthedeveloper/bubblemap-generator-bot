@@ -21,6 +21,7 @@ import { MySQL } from '@telegraf/session/mysql';
         DB_USER: Joi.string().required().default('root'),
         DB_PASSWORD: Joi.string().optional().allow(''),
         DB_DATABASE: Joi.string().required(),
+        DB_PORT: Joi.string(),
       }),
     }),
     CacheModule.register({
@@ -36,6 +37,7 @@ import { MySQL } from '@telegraf/session/mysql';
           user: configService.get<string>('DB_USER'),
           password: configService.get<string>('DB_PASSWORD'),
           database: configService.get<string>('DB_DATABASE'),
+          port: parseInt(configService.get('DB_PORT'), 10),
         });
         return {
           token: configService.get<string>('TELEGRAM_BOT_TOKEN'),
